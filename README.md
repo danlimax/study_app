@@ -18,18 +18,18 @@ A aplicação utiliza tecnologias modernas para garantir performance, organizaç
 
 ### Front-end
 
-- ⚡ Vite
-- ⚛️ React
-- 🎨 Mantine
-- 🟦 TypeScript
+- Vite
+- React
+- Mantine
+- TypeScript
 
 ### Back-end
 
-- 🟢 Node.js
-- 🚂 Express
-- 🔷 TypeScript
-- 🧬 Prisma ORM
-- 🐘 PostgreSQL
+- Node.js
+- Express
+- TypeScript
+- Prisma ORM
+- PostgreSQL
 
 ---
 
