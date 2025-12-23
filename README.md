@@ -115,23 +115,6 @@ npx prisma migrate dev --name init
 npx prisma generate
 ```
 
-7.Agora que você instalou todas as dependências, pode instanciar o Prisma Client. Você precisa passar uma instância do adaptador de driver do Prisma ORM para o construtor do PrismaClient:
-
-Crie um diretório e o arquivo lib/prisma.ts dentro da pasta prisma e coloque o conteúdo abaixo no arquivo.
-
-```bash
-import "dotenv/config";
-import { PrismaPg } from '@prisma/adapter-pg'
-import { PrismaClient } from '../generated/prisma/client'
-
-const connectionString = `${process.env.DATABASE_URL}`
-
-const adapter = new PrismaPg({ connectionString })
-const prisma = new PrismaClient({ adapter })
-
-export { prisma }
-```
-
 7.Inicie o servidor:
 
 ```bash
