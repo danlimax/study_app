@@ -1,6 +1,6 @@
 # 🚀 Projeto Full Stack com Vite, Mantine, Node.js com express e Prisma
 
-![Preview do Projeto](./caminho-da-imagem.png)
+![Preview do Projeto](./images/Study-app.png)
 
 ## 📌 Descrição
 
