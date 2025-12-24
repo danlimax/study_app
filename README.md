@@ -89,24 +89,32 @@ cd api
 npm install
 ```
 
-3. Crie um banco de dados utilizando o Prisma, lembrando que precisa autenticar no sistema do prisma para a criação do banco de dados:
+3. Instale o docker e rode o comando na raiz do projeto:
 
 ```bash
-npx prisma init --db
+docker-compose up -d
 ```
 
-Obs: Certifique de selecionar os opções referente ao Postgres e o .env do banco de dados será criada automaticamente.
-
-4. Caso não crie automaticamente atualizar o .env com essa configuração:
+4. Crie um arquivo .env e coloque a seguinte configuração:
 
 ```bash
-DATABASE_URL="postgresql://usuario:senha@localhost:5432/nome_do_banco"
+#PORT
+PORT=
+
+#Frontend URL
+APP_URL=
+
+#DATABASE
+DATABASE_URL="postgresql://user:password@localhost:5432/database?schema=public"
+POSTGRES_DB=
+POSTGRES_USER=
+POSTGRES_PASSWORD=
 ```
 
 5.Execute as migrações do prisma:
 
 ```bash
-npx prisma migrate dev --name init
+npx prisma migrate dev
 ```
 
 6.Agora execute o seguinte comando para gerar o cliente Prisma:
@@ -119,12 +127,6 @@ npx prisma generate
 
 ```bash
 npm run dev
-```
-
-8.Para vizualizar o banco de dados utilize o seguinte comando:
-
-```bash
-npx prisma studio --config ./prisma.config.ts
 ```
 
 O back-end estará rodando em:
@@ -174,4 +176,10 @@ O front-end estará disponível em:
 
 ```bash
 http://localhost:5173/
+```
+
+Obs: Crie um arquivo .env e coloque a seguinte variável para acessar a API:
+
+```bash
+VITE_API=http://url_da_api:porta
 ```
