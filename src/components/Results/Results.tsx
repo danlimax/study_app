@@ -12,8 +12,10 @@ interface TaskData {
   theme: string;
   sugestion: number;
 }
+
 export function Results({ theme }: Props) {
   const [data, setData] = useState<TaskData[]>([]);
+
   //Fazer validação para quando tiver erro ou dados vazios e não renderizar a tabela.
   useEffect(() => {
     const fetchData = async () => {

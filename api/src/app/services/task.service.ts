@@ -27,8 +27,6 @@ async function getAllTasks(query: string) {
 }
 
 async function createTask(data: TaskBody) {
-  //Fazer validação dos dados.
-
   const task = await prisma.task.create({ data: { ...data } });
 
   return task.name;

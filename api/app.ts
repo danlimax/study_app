@@ -1,3 +1,4 @@
+import "dotenv/config";
 import express from "express";
 import routes from "./src/router/index.route";
 import cors from "cors";
@@ -5,19 +6,15 @@ import cors from "cors";
 const app = express();
 
 const config = {
-  origin: "http://localhost:5173", // The exact origin of the client
-  credentials: true, // Allows the Access-Control-Allow-Credentials header to be true
+  origin: process.env.APP_URL,
+  credentials: true, //Cookies e outras credenciais como cabeçalhos de autorização.
 };
 
-app.use(express.urlencoded({ limit: "10MB", extended: true }));
+app.use(express.urlencoded({ limit: "10MB", extended: true })); //Analisa dados de formulários HTML que são codificados em URL (application/x-www-form-urlencoded).
 
-app.use(express.json({ limit: "10MB" }));
+app.use(express.json({ limit: "10MB" })); // Analisa (faz parsing) dados que chegam no formato JSON (texto puro no corpo da requisição).
 
 app.use(cors(config));
-
-app.get("/", (req, res) => {
-  return res.status(200).json("Jason de teste");
-});
 
 app.use(routes);
 
