@@ -13,7 +13,7 @@ export function Search({ searchTheme }: Props) {
   }
 
   return (
-    <>
+ 
       <Flex w={{ base: 300, sm: 250, lg: 400 }} align="center" gap={8}>
         <BsSearch />
         <TextInput
@@ -25,6 +25,5 @@ export function Search({ searchTheme }: Props) {
         />
         <Button onClick={handleClickButton}>Enviar</Button>
       </Flex>
-    </>
   );
 }

@@ -2,6 +2,7 @@ import { Center, Flex } from "@mantine/core";
 import { Search } from "../components/Search/Search";
 import { useState } from "react";
 import { Results } from "../components/Results/Results";
+import { NewTask } from "../components/NewTask/NewTask";
 
 export function Home() {
   const [searchedTheme, setSearchedTheme] = useState("");
@@ -20,6 +21,7 @@ export function Home() {
           gap={16}
         >
           <Search searchTheme={handelReciveTheme} />
+          <NewTask />
           <Results theme={searchedTheme} />
         </Flex>
       </Center>
