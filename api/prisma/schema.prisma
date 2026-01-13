@@ -17,6 +17,12 @@ model Task {
   id        Int    @id @default(autoincrement())
   theme     String
   name      String
-  level     String
+  level     Level  @default(BEGINNER)
   sugestion String
+}
+
+enum Level {
+  BEGINNER
+  INTERMEDIATE
+  AVANCED
 }

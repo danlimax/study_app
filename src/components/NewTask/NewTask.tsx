@@ -2,6 +2,7 @@ import { Button, Group, Modal, Radio, TextInput } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { PiListPlusBold } from "react-icons/pi";
 import { useForm } from "@mantine/form";
+import { create } from "../../services/task.service";
 
 export function NewTask() {
   const [opened, { open, close }] = useDisclosure(false);
@@ -10,7 +11,7 @@ export function NewTask() {
     mode: "uncontrolled",
     initialValues: {
       name: "",
-      level: "",
+      level: 0,
       sugestion: "",
       theme: "",
     },
@@ -21,7 +22,7 @@ export function NewTask() {
   return (
     <>
       <Modal opened={opened} onClose={close} title="Criar nova tarefa">
-        <form onSubmit={form.onSubmit((values) => console.log(values))}>
+        <form onSubmit={form.onSubmit((values) => create(values))}>
           <TextInput withAsterisk label="Tema" />
           <TextInput withAsterisk label="Tarefa" />
           <Radio.Group
@@ -30,9 +31,9 @@ export function NewTask() {
             withAsterisk
           >
             <Group mt="xs">
-              <Radio value="iniciante" label="Iniciante" />
-              <Radio value="intermediario" label="Intermediário" />
-              <Radio value="acancado" label="Avançado" />
+              <Radio value={0} label="Iniciante" />
+              <Radio value={1} label="Intermediário" />
+              <Radio value={2} label="Avançado" />
             </Group>
           </Radio.Group>
           <TextInput withAsterisk label="Sugestão" />
