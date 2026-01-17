@@ -8,7 +8,7 @@ interface ICreateTask {
 }
 
 async function getAllTasks(query: string) {
-  // Melhorias futuras: paginação, quantidade de itens em cada página, validação para erro se a lista estiver vazia.
+  // Melhorias futuras: paginação, quantidade de itens em cada página.
 
   const data = await prisma.task.findMany({
     where: {
