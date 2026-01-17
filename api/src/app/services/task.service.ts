@@ -19,10 +19,6 @@ async function getAllTasks(query: string) {
     },
   });
 
-  if (data.length === 0) {
-    throw new Error("Lista de estudos não encontrada.");
-  }
-
   return data;
 }
 

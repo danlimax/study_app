@@ -8,9 +8,13 @@ async function getAll(req: Request, res: Response) {
 
     const response = await getAllTasks(query);
 
+    if (response.length === 0) {
+      return res.status(404).json({ error: "Nenhuma tarefa foi encontrada." });
+    }
+
     return res.status(200).json(response);
-  } catch (error) {
-    return res.status(404).json({ error: error.message });
+  } catch {
+    return res.status(500).json({ error: "Internal server error." });
   }
 }
 
@@ -20,7 +24,7 @@ async function create(req: Request, res: Response) {
 
     return res.status(201).json({ response });
   } catch (error) {
-    return res.status(400).json({ error: error.message });
+    return res.status(500).json({ error: error.message });
   }
 }
 
