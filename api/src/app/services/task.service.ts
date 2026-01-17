@@ -1,6 +1,6 @@
 import { prisma } from "../../../prisma/lib/prisma";
 
-interface TaskBody {
+interface ICreateTask {
   name: string;
   level: string;
   sugestion: string;
@@ -22,7 +22,7 @@ async function getAllTasks(query: string) {
   return data;
 }
 
-async function createTask(data: TaskBody) {
+async function createTask(data: ICreateTask) {
   const task = await prisma.task.create({ data: { ...data } });
 
   return task.name;

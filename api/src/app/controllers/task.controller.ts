@@ -23,8 +23,8 @@ async function create(req: Request, res: Response) {
     const response = await createTask(req.body);
 
     return res.status(201).json({ response });
-  } catch (error) {
-    return res.status(500).json({ error: error.message });
+  } catch {
+    return res.status(500).json({ error: "Internal server error." });
   }
 }
 
