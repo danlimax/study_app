@@ -20,6 +20,15 @@ async function getAll(req: Request, res: Response) {
 
 async function create(req: Request, res: Response) {
   try {
+    let prop: string;
+    for (prop in req.body) {
+      if (!req.body[prop]) {
+        return res
+          .status(400)
+          .json({ error: "Favor preencher todos os campos" });
+      }
+    }
+
     const response = await createTask(req.body);
 
     return res.status(201).json({ response });
