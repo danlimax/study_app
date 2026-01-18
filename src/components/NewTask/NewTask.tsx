@@ -1,4 +1,4 @@
-import { Button, Group, Modal, Radio, TextInput } from "@mantine/core";
+import { Button, Center, Group, Modal, Radio, TextInput } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { PiListPlusBold } from "react-icons/pi";
 import { useForm } from "@mantine/form";
@@ -11,7 +11,7 @@ export function NewTask() {
     mode: "uncontrolled",
     initialValues: {
       name: "",
-      level: 0,
+      level: "",
       sugestion: "",
       theme: "",
     },
@@ -23,20 +23,40 @@ export function NewTask() {
     <>
       <Modal opened={opened} onClose={close} title="Criar nova tarefa">
         <form onSubmit={form.onSubmit((values) => create(values))}>
-          <TextInput withAsterisk label="Tema" />
-          <TextInput withAsterisk label="Tarefa" />
+          <TextInput
+            withAsterisk
+            label="Tema"
+            key={form.key("theme")}
+            {...form.getInputProps("theme")}
+          />
+          <TextInput
+            withAsterisk
+            label="Tarefa"
+            key={form.key("name")}
+            {...form.getInputProps("name")}
+          />
           <Radio.Group
             name="level"
             label="Selecione o nível da tarefa"
             withAsterisk
+            key={form.key("level")}
+            {...form.getInputProps("level")}
           >
             <Group mt="xs">
-              <Radio value={0} label="Iniciante" />
-              <Radio value={1} label="Intermediário" />
-              <Radio value={2} label="Avançado" />
+              <Radio value="BEGINNER" label="Iniciante" />
+              <Radio value="INTERMADIATE" label="Intermediário" />
+              <Radio value="AVANCED" label="Avançado" />
             </Group>
           </Radio.Group>
-          <TextInput withAsterisk label="Sugestão" />
+          <TextInput
+            withAsterisk
+            label="Sugestão"
+            key={form.key("sugestion")}
+            {...form.getInputProps("sugestion")}
+          />
+          <Center mt={8}>
+            <Button type="submit">Enviar</Button>
+          </Center>
         </form>
       </Modal>
 

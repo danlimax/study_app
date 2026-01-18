@@ -37,6 +37,7 @@ export function Results({ theme }: Props) {
         <Table withTableBorder>
           <Table.Thead>
             <Table.Tr>
+              <Table.Th></Table.Th>
               <Table.Th>Tema</Table.Th>
               <Table.Th>Tarefas</Table.Th>
               <Table.Th>Nível</Table.Th>
@@ -44,9 +45,10 @@ export function Results({ theme }: Props) {
             </Table.Tr>
           </Table.Thead>
           <Table.Tbody>
-            {data.map((item) => {
+            {data.map((item, index) => {
               return (
                 <Table.Tr key={item.id}>
+                  <Table.Td>{index + 1}</Table.Td>
                   <Table.Td>{item.theme}</Table.Td>
                   <Table.Td>{item.name}</Table.Td>
                   <Table.Td>{item.level}</Table.Td>

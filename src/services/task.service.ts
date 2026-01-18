@@ -3,7 +3,7 @@ import { api } from "./api";
 interface ICreateTask {
   theme: string;
   name: string;
-  level: number;
+  level: string;
   sugestion: string;
 }
 
