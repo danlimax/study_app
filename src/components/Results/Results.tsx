@@ -16,7 +16,6 @@ interface TaskData {
 export function Results({ theme }: Props) {
   const [data, setData] = useState<TaskData[]>([]);
 
-  //Fazer validação para quando tiver erro ou dados vazios e não renderizar a tabela.
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -24,7 +23,7 @@ export function Results({ theme }: Props) {
 
         setData(response);
       } catch (err) {
-        console.log("teste", err);
+        console.log(err);
       }
     };
 

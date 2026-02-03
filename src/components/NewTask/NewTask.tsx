@@ -15,10 +15,14 @@ export function NewTask() {
       sugestion: "",
       theme: "",
     },
-
-    validate: {},
+    validate: {
+      name: (value) => (value === "" ? "O nome da tarefa é obrigatório" : null),
+      theme: (value) =>
+        value === "" ? "O tema do estudo é obrigatório" : null,
+      sugestion: (value) =>
+        value === "" ? "A sugestão de estudo é obrigatório" : null,
+    },
   });
-
   return (
     <>
       <Modal opened={opened} onClose={close} title="Criar nova tarefa">
