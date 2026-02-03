@@ -1,7 +1,6 @@
 import type { Request, Response } from "express";
 import { createTask, getAllTasks } from "../services/task.service";
 
-//validação dos dados tem que ser feita no controller.
 async function getAll(req: Request, res: Response) {
   try {
     const query = req.query.theme as string;

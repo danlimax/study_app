@@ -11,7 +11,7 @@ export function Home() {
   }
   return (
     <>
-      <Center style={{ width: "100vw", height: "100vh" }}>
+      <Center w="100vw" h="100vh">
         <Flex
           w={{ base: 350, sm: 600, lg: 800 }}
           bg="#343a40"

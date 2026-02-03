@@ -11,7 +11,7 @@ export function NewTask() {
     mode: "uncontrolled",
     initialValues: {
       name: "",
-      level: "",
+      level: "BEGINNER",
       sugestion: "",
       theme: "",
     },
@@ -23,6 +23,7 @@ export function NewTask() {
         value === "" ? "A sugestão de estudo é obrigatório" : null,
     },
   });
+
   return (
     <>
       <Modal opened={opened} onClose={close} title="Criar nova tarefa">
@@ -46,7 +47,7 @@ export function NewTask() {
             key={form.key("level")}
             {...form.getInputProps("level")}
           >
-            <Group mt="xs">
+            <Group mt="xs" mb="xs">
               <Radio value="BEGINNER" label="Iniciante" />
               <Radio value="INTERMADIATE" label="Intermediário" />
               <Radio value="AVANCED" label="Avançado" />

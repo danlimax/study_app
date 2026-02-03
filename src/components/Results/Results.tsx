@@ -45,12 +45,21 @@ export function Results({ theme }: Props) {
           </Table.Thead>
           <Table.Tbody>
             {data.map((item, index) => {
+              let level;
+
+              if (item.level === "BEGINNER") {
+                level = "Iniciante";
+              } else if (item.level === "INTERMADIATE") {
+                level = "Intermediário";
+              } else {
+                level = "Avançado";
+              }
               return (
                 <Table.Tr key={item.id}>
                   <Table.Td>{index + 1}</Table.Td>
                   <Table.Td>{item.theme}</Table.Td>
                   <Table.Td>{item.name}</Table.Td>
-                  <Table.Td>{item.level}</Table.Td>
+                  <Table.Td>{level}</Table.Td>
                   <Table.Td>{item.sugestion}</Table.Td>
                 </Table.Tr>
               );
