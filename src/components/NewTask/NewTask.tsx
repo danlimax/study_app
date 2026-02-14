@@ -27,7 +27,13 @@ export function NewTask() {
   return (
     <>
       <Modal opened={opened} onClose={close} title="Criar nova tarefa">
-        <form onSubmit={form.onSubmit((values) => create(values))}>
+        <form
+          onSubmit={form.onSubmit(async (values) => {
+            const response = await create(values);
+            close();
+            console.log(response);
+          })}
+        >
           <TextInput
             withAsterisk
             label="Tema"

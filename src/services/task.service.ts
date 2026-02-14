@@ -1,3 +1,4 @@
+import type { AxiosError } from "axios";
 import { api } from "./api";
 
 interface ICreateTask {
@@ -7,16 +8,34 @@ interface ICreateTask {
   sugestion: string;
 }
 
-export async function getAll(query: string) {
-  const response = await api.get("/tasks", {
-    params: {
-      theme: query,
-    },
-  });
+interface ApiResponse {
+  message: string;
+}
 
-  return response.data;
+export async function getAll(query = "") {
+  try {
+    const response = await api.get("/tasks", {
+      params: {
+        theme: query,
+      },
+    });
+
+    return response.data;
+  } catch (err) {
+    const error = err as AxiosError<ApiResponse>;
+
+    throw new Error(error.response?.data.message);
+  }
 }
 
 export async function create(body: ICreateTask) {
-  await api.post("/tasks", body);
+  try {
+    const response = await api.post("/tasks", body);
+
+    return response.data.response;
+  } catch (err) {
+    const error = err as AxiosError<ApiResponse>;
+
+    throw new Error(error.response?.data.message);
+  }
 }

@@ -1,72 +1,12 @@
-import { ScrollArea, Table } from "@mantine/core";
-import { getAll } from "../../services/task.service";
-import { useEffect, useState } from "react";
+import { ScrollArea } from "@mantine/core";
+import type { ReactNode } from "react";
 interface Props {
-  theme: string;
+  children?: ReactNode;
 }
-
-interface TaskData {
-  id: number;
-  name: string;
-  level: string;
-  theme: string;
-  sugestion: number;
-}
-
-export function Results({ theme }: Props) {
-  const [data, setData] = useState<TaskData[]>([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getAll(theme);
-
-        setData(response);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    fetchData();
-  }, [theme]);
-
+export function Results({ children }: Props) {
   return (
     <ScrollArea w={{ base: 300, sm: 500, lg: 700 }} h={400}>
-      <Table.ScrollContainer minWidth={700} type="native">
-        <Table withTableBorder>
-          <Table.Thead>
-            <Table.Tr>
-              <Table.Th></Table.Th>
-              <Table.Th>Tema</Table.Th>
-              <Table.Th>Tarefas</Table.Th>
-              <Table.Th>Nível</Table.Th>
-              <Table.Th>Sugestão</Table.Th>
-            </Table.Tr>
-          </Table.Thead>
-          <Table.Tbody>
-            {data.map((item, index) => {
-              let level;
-
-              if (item.level === "BEGINNER") {
-                level = "Iniciante";
-              } else if (item.level === "INTERMADIATE") {
-                level = "Intermediário";
-              } else {
-                level = "Avançado";
-              }
-              return (
-                <Table.Tr key={item.id}>
-                  <Table.Td>{index + 1}</Table.Td>
-                  <Table.Td>{item.theme}</Table.Td>
-                  <Table.Td>{item.name}</Table.Td>
-                  <Table.Td>{level}</Table.Td>
-                  <Table.Td>{item.sugestion}</Table.Td>
-                </Table.Tr>
-              );
-            })}
-          </Table.Tbody>
-        </Table>
-      </Table.ScrollContainer>
+      {children}
     </ScrollArea>
   );
 }
