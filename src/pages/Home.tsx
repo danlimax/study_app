@@ -1,10 +1,10 @@
+import { notifications } from "@mantine/notifications";
 import { Center, Flex, Loader, Table } from "@mantine/core";
-import { Search } from "../components/Search/Search";
 import { useEffect, useState } from "react";
+import { Search } from "../components/Search/Search";
 import { Results } from "../components/Results/Results";
 import { NewTask } from "../components/NewTask/NewTask";
 import { getAll } from "../services/task.service";
-import { notifications } from "@mantine/notifications";
 
 interface TaskData {
   id: number;
@@ -43,7 +43,6 @@ export function Home() {
           message: err.message,
           position: "bottom-right",
         });
-        setTimeout(() => setLoaded(true), 3000);
       }
     };
 

@@ -10,7 +10,9 @@ async function getAll(req: Request, res: Response) {
     if (response.length === 0) {
       return res
         .status(404)
-        .json({ message: "Nenhuma tarefa foi encontrada." });
+        .json({
+          message: "Nenhuma tarefa com o tema pesquisado foi encontrada.",
+        });
     }
 
     return res.status(200).json(response);
